@@ -1,0 +1,3 @@
+redis~=4.4.1
+fastapi~=0.89.0
+uvicorn
