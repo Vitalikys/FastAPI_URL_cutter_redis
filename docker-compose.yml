@@ -1,0 +1,27 @@
+#  to use  multi containers and make diff things
+version: "3.8"
+services:
+  web:
+    container_name: app_short_url_redis
+    build: .
+    ports:
+      - "8005:8001"
+    command: bash -c "echo 'hello redis_docker-compose'
+        && uvicorn app_short_redis.main:app --reload --host 0.0.0.0 --port 8001"
+    depends_on:
+      - redis
+#    links:
+#      - "redis://redis:63791"
+    restart: always
+
+  redis:
+    image: "redis:latest"
+    container_name: redis
+    healthcheck:
+      test: redis-cli ping
+      interval: 3s
+      timeout: 5s
+      retries: 3
+
+#    volumes: # no volumes, run in RAM memory
+      # our host maschine: our container

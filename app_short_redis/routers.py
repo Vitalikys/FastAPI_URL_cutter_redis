@@ -5,7 +5,8 @@ from app_short_redis.crud import create_random_key
 from app_short_redis.schemas import BaseUrl
 
 router = APIRouter()
-redis_client = StrictRedis(host='localhost', port=6379, db=1)
+# redis_client = StrictRedis(host='127.0.0.1', port=63791, db=0)
+redis_client = StrictRedis(host='redis', port=6379, db=0)
 LOCAL_HOST_URL = 'http://78.27.202.55:8005/'
 
 
@@ -15,7 +16,7 @@ def index():
 
 
 @router.get('/url')
-def get_all_urls():
+def get_all_urls1():
     try:
         all_urls_response = []
         all_keys = redis_client.keys()

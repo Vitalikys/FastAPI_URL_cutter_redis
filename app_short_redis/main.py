@@ -9,6 +9,5 @@ app = FastAPI(
     contact={'name':'Vitalii Kostyreva', 'tel': '0737776107'}
 )
 
-
 app.include_router(router)
 
