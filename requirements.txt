@@ -5,3 +5,7 @@ uvicorn
 # for templates:
 jinja2
 requests
+
+# To receive uploaded files and/or form data
+# from fastapi import Form, UploadFile
+python-multipart==0.0.5
