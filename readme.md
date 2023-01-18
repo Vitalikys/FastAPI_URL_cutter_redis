@@ -27,3 +27,5 @@ $ sudo docker container rm fastapi_urls_cut_redis
 $ sudo docker image rm fastapi_urls_cut_redis
 
 https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-22-04
+
+https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-ubuntu-1804

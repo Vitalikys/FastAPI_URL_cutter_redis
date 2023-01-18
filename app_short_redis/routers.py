@@ -1,16 +1,17 @@
-from fastapi import APIRouter, Request, HTTPException
+from fastapi import APIRouter, Request, HTTPException, Form, responses
 from redis import StrictRedis
 
 from app_short_redis.crud import create_random_key
 from app_short_redis.schemas import BaseUrl
 
 router = APIRouter()
-# redis_client = StrictRedis(host='127.0.0.1', port=63791, db=0)
-redis_client = StrictRedis(host='redis', port=6379, db=0)
+redis_client = StrictRedis(host='127.0.0.1', port=63791, db=1)
+# redis_client = StrictRedis(host='redis', port=6379, db=0)
 LOCAL_HOST_URL = 'http://78.27.202.55:8005/'
 
 
-@router.get('/')
+
+@router.get('/', name='home page on server starts')
 def index():
     return {'API to create short url': 'see: /docs'}
 
