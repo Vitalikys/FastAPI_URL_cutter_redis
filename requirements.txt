@@ -9,3 +9,6 @@ requests
 # To receive uploaded files and/or form data
 # from fastapi import Form, UploadFile
 python-multipart==0.0.5
+
+# For .environment variables
+python-dotenv>=0.19.2
