@@ -21,12 +21,12 @@ templates = Jinja2Templates(directory='templates')
 #     return resp_post.json()
 
 @router_template.post('/create_url_template')
-def url_short_create(url_name: str = Form(...)):
-    # print('url_name', type(url_name))
+def url_short_create(request: Request, url_name: str = Form(...)):
+    print('url_name', type(url_name))
     url_base = BaseUrl(target_url=url_name)
-    # print('url_base', url_base, type(url_base))
+    print('url_base', url_base, type(url_base))
     try:
-        return create_url(url_base)
+        return create_url(url_base, request=request)
     except Exception as ex:
         print(str(ex))
     return {'short url': 'created'}

@@ -3,7 +3,7 @@
 import redis
 import json
 
-redis_client = redis.StrictRedis(host='localhost', port=63791, db=0)
+redis_client = redis.StrictRedis(host='localhost', port=63791, db=2)
 my_data = {
     'target_url': 'google.com',
     'short_url': 'GKI3DTE23',
