@@ -1,4 +1,5 @@
 ### Build a URL Shortener With FastAPI and Redis
+contains get_ip
 start redis in docker :
 ```shell
     docker run --name my-redis -p 6379x:6379 -d redis

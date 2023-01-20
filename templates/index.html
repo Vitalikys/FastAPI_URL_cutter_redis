@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <title>Create url</title>
 </head>
-<body>
-      <h1>Create URL</h1>
-      <form method="post" action="/create_url_template">
-         <label for="url_name">Enter an url to make shorter:</label><br>
-         <input type="text" id="url_name" name="url_name">
-         <input class="submit" type="submit" value="Submit">
-      </form>
+<body style="background: #FFE4B5">
+<div style="display: flex;
+            justify-content: center;
+            align-items: center;">
+
+    <form method="post" action="/create_url_template" >
+        <div>
+            <h1>Create URL</h1>
+        </div>
+        <div>
+            <label for="url_name">Enter any url to make shorter:</label><br>
+        </div>
+        <div>
+            <input type="text" id="url_name" name="url_name" value="https://www.google.com/">
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <input class="submit" type="submit" value="Generate">
+        </div>
+
+    </form>
+</div>
+
 </body>
 </html>

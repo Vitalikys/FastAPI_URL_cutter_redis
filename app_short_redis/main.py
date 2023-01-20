@@ -10,5 +10,5 @@ app = FastAPI(
     contact={'name': 'Vitalii Kostyreva', 'tel': '0737776107'}
 )
 
-app.include_router(router)
-app.include_router(router_template)  # another router, for tml templates
+app.include_router(router, tags=["Url API core"])
+app.include_router(router_template, tags=['html_template'])  # another router, for tml templates

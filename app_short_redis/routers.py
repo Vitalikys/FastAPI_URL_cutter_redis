@@ -1,7 +1,10 @@
+import time
+
 from fastapi import APIRouter, Request, HTTPException
 from redis import StrictRedis
 
 from app_short_redis.crud import create_random_key
+# from app_short_redis.get_ip import get_client_ip
 from app_short_redis.schemas import BaseUrl
 
 router = APIRouter()
@@ -11,7 +14,9 @@ LOCAL_HOST_URL = 'http://78.27.202.55:8005/'
 
 
 @router.get('/', name='home page on server starts')
-def index():
+def index(request: Request):
+    client_host = request.client.host
+    print('IP:', client_host)
     return {'API to create short url': 'see: /docs'}
 
 
@@ -30,7 +35,12 @@ def get_all_urls1():
 
 
 @router.post('/url')
-def create_url(url: BaseUrl):
+def create_url(url: BaseUrl, request: Request):
+    """
+    short_url will be a key of record in DB
+    :param url: client url, same target_url
+    :return:
+    """
     short_url = create_random_key(length=4)
 
     # checking if url is unique, not in DB
@@ -39,10 +49,13 @@ def create_url(url: BaseUrl):
 
     redis_client.hset(short_url, 'target_url', url.target_url)
     redis_client.hset(short_url, 'clicks', 0)
+    redis_client.hset(short_url, 'created_at', time.ctime())
     # redis_client.expire(short_url, 2*86400)  # set expire for two days
     return {'target_url': url.target_url,
             'short_url': LOCAL_HOST_URL + short_url,
-            'expire at': 'two days'}
+            'expire at': 'two days',
+            'created_at': time.ctime(),
+            'ip': request.client.host}
 
 
 @router.get("/{url_keys}/")
